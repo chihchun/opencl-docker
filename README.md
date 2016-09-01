@@ -7,14 +7,28 @@ The images are designed to be easy tested applications with different OpenCL dri
 
 ## Application
 
-* chihchun/hashcat-beignet https://hashcat.net/hashcat/
+* [chihchun/hashcat-beignet](https://hub.docker.com/r/chihchun/hashcat-beignet/) https://hashcat.net/hashcat/
 
 ## Supported OpenCL platform
 
 * Intel platform
-    * chihchun/opencl-beignet https://www.freedesktop.org/wiki/Software/Beignet/
+    * [chihchun/opencl-beignet](https://hub.docker.com/r/chihchun/opencl-beignet/)
+
+           Beignet is an open source implementation of the OpenCL specification - a generic compute oriented API. This code base contains the code to run OpenCL programs on Intel GPUs which basically defines and implements the OpenCL host functions required to initialize the device, create the command queues, the kernels and the programs and run them on the GPU.
+
+           https://www.freedesktop.org/wiki/Software/Beignet/
+
+    * [chihchun/opencl-intel](https://hub.docker.com/r/chihchun/opencl-intel/)
+
+           Intel® SDK for OpenCL™ Applications 2016 R2 for Linux* (64 bit)
+           OpenCL™ 2.0 Driver for Intel® HD, Iris™, and Iris™ Pro Graphics for Linux* (64-bit)
+           https://software.intel.com/en-us/articles/opencl-drivers
+
 * AMD/ATI Radeon (not tested)
-    * chihchun/opencl-mesa http://mesa3d.sourceforge.net/
+    * [chihchun/opencl-mesa](https://hub.docker.com/r/chihchun/opencl-mesa/)
+
+            Mesa (Gallium) https://dri.freedesktop.org/wiki/GalliumCompute/
+
 * Nvidia (TBD)
 
 ## Usage
@@ -24,3 +38,9 @@ You need to expose the /dev/dri to the docker container, in order to let the run
     $ docker run -t -i --device /dev/dri:/dev/dri chihchun/opencl-beignet:1.1.1 clinfo
     $ docker run -t -i --device /dev/dri:/dev/dri \
             chihchun/hashcat-beignet hashcat -b
+
+The Intel OpenCL Driver requires XCB-DRI2 authentication, which must be running in X11 enviroment. Please run the following docker command from Desktop.
+
+    % docker run -t -i --device /dev/dri:/dev/dri -v $(pwd)/wip:/mnt \
+        -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY \
+        chihchun/opencl-intel:2016R2 clinfo
