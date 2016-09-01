@@ -7,7 +7,10 @@ The images are designed to be easy tested applications with different OpenCL dri
 
 ## Application
 
-* [chihchun/hashcat-beignet](https://hub.docker.com/r/chihchun/hashcat-beignet/) https://hashcat.net/hashcat/
+[hashcat](https://hashcat.net/hashcat/)
+
+* [chihchun/hashcat-beignet](https://hub.docker.com/r/chihchun/hashcat-beignet/)
+* [chihchun/hashcat-intel](https://hub.docker.com/r/chihchun/hashcat-intel/)
 
 ## Supported OpenCL platform
 
@@ -39,7 +42,7 @@ You need to expose the /dev/dri to the docker container, in order to let the run
     $ docker run -t -i --device /dev/dri:/dev/dri \
             chihchun/hashcat-beignet hashcat -b
 
-The Intel OpenCL Driver requires XCB-DRI2 authentication, which must be running in X11 enviroment. Please run the following docker command from Desktop.
+The Intel OpenCL Driver requires XCB-DRI2 authentication, which must be running in X11 enviroment. Please run the following docker command from Desktop. Intel OpenCL SDK requires 4.4.0 kernel with patches, the docker image has been tested with Ubuntu 16.04.
 
     % docker run -t -i --device /dev/dri:/dev/dri -v $(pwd)/wip:/mnt \
         -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY \
