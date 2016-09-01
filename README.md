@@ -1,6 +1,6 @@
-# Docker images that support differnt OpenCl Runtime
+# Docker images that support different OpenCl Runtime
 
-The images are designed to be easy tested applications with differnet OpenCL drivers/runtime.
+The images are designed to be easy tested applications with different OpenCL drivers/runtime.
 
 - Support x86_64/amd64 platform.
 - Ubuntu as based OS.
