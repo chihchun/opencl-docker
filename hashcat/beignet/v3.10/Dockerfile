@@ -6,7 +6,7 @@ ENV OPENHASH_VERSION=v3.10
 
 RUN apt-get update \
  && apt-get install -y build-essential git \
- && apt-get build-dep -y hashcat
+ && apt-get build-dep -o APT::Get::Build-Dep-Automatic=true -y hashcat
 
 WORKDIR /tmp
 RUN git clone --depth 1 --branch $OPENHASH_VERSION \
@@ -17,6 +17,7 @@ RUN git clone --depth 1 --branch $OPENHASH_VERSION \
  && ln -s /usr/bin/hashcat64.bin /usr/bin/hashcat64
 
 # Clean up APT when done
-RUN apt-get autoremove \
+RUN apt-get purge -y build-essential git \
+ && apt-get autoremove -y \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
