@@ -7,7 +7,7 @@ The images are designed to be easy tested applications with differnet OpenCL dri
 
 ## Application
 
-- chihchun/hashcat-beignet
+* chihchun/hashcat-beignet https://hashcat.net/hashcat/
 
 ## Supported OpenCL platform
 
