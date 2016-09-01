@@ -1,4 +1,4 @@
-# Docker images that support different OpenCl Runtime
+# Docker images that support different OpenCL Runtime
 
 The images are designed to be easy tested applications with different OpenCL drivers/runtime.
 
